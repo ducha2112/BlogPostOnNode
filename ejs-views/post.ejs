@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<%- include('../partials/head.ejs') %>
+
+  <body>
+
+    <div class="container">
+      <div class="header-top">
+        <span class="logo">I'mProger</span>
+
+        <%- include('../partials/nav.ejs') %>
+      </div>
+      <div class="post">
+        <% if(session?.user?.name===post?.author && session?.authorized) {%>
+          <div class="update"><a href="/edit/<%= post.id %>"><i class="fa-solid fa-pen-to-square"
+                style="color: #f6f5f4;"></i></a></div>
+          <div class="delete" data-id="<%= post.id %>"><a href=""><i class="fa-solid fa-trash"
+                data-id="<%= post.id %>"></i></a></div>
+          <% } %>
+            <h3>
+              <%= post.title %>
+            </h3>
+            <img id="image" src="/uploads/<%= post.image %>" alt="no-image">
+            <p>
+              <%= post.text %>
+            </p>
+            <div class="date">
+              <%= post.createdAt.toLocaleDateString() || "No date" %><span class="author_name">
+                  Автор статьи: <%= post.author %>
+                </span>
+            </div>
+
+      </div>
+      <%- include('../partials/footer.ejs') %>
+        <script>
+          const urlImage = document.querySelector('#image').src;
+          const partsString = urlImage.split('/');
+          partsString.shift('http:');
+          partsString.shift('');
+          partsString.shift('localhost:3000');
+          partsString.unshift('public');
+          const link = partsString.join('/');
+          console.log(link);
+          let params = new URLSearchParams('link=' + link);
+          document.addEventListener('click', (e) => {
+            const id = e.target?.dataset?.id;
+            if (id) {
+              fetch(`/posts/${id}`, {
+                method: 'DELETE',
+                body: params,
+              }).then(() => {
+                window.location.href = '/posts';
+              });
+            }
+          })
+        </script>
+  </body>
+
+</html>

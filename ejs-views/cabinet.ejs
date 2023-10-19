@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<%- include('../partials/head.ejs') %>
+
+  <body>
+
+    <div class="container">
+      <div class="header-top">
+        <span class="logo">I'mProger</span>
+
+        <%- include('../partials/nav.ejs') %>
+
+
+      </div>
+      <div class="content">
+        <div class="cabinet">
+          <h2>PERSONAL BLOG</h2>
+          <h4>Личный кабинет</h4>
+
+          <h3>Привет,
+            <%= session.user.name %>
+          </h3>
+
+          <p><span>Ваш email:</span>
+            <%= session.user.email %>
+          </p>
+        </div>
+        <a href="/log-out"><button type="button" id="logout">Log Out</button></a>
+      </div>
+
+    </div>
+    <%- include('../partials/footer.ejs') %>
+
+  </body>
+
+</html>

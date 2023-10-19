@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<%- include('../partials/head.ejs') %>
+
+  <body>
+
+    <div class="container">
+      <div class="header-top">
+        <span class="logo">I'mProger</span>
+
+        <%- include('../partials/nav.ejs') %>
+      </div>
+      <div class="contacts">
+        <h2>Контакты</h2>
+        <h3>Дадухин Сергей </h3>
+        <h4>Fullstack-разработчик</h4>
+        <h5>
+          <%= data.email %>
+        </h5>
+        <h5>
+          <%= data.tel %>
+        </h5>
+        <h5>
+          <%= data.telega %>
+        </h5>
+
+        <ul>
+          <% if (contacts.length) { %>
+            <% contacts.forEach(({link, name})=>{ %>
+              <li>
+                <a href="<%= link %>">
+                  <%= name %>
+                </a>
+              </li>
+              <% }) %>
+                <% } %>
+        </ul>
+      </div>
+    </div>
+    <%- include('../partials/footer.ejs') %>
+  </body>
+
+</html>

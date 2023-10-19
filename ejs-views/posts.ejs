@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<%- include('../partials/head.ejs') %>
+
+  <body>
+
+    <div class="container">
+      <div class="header-top">
+        <span class="logo">I'mProger</span>
+        <%- include('../partials/nav.ejs') %>
+      </div>
+      <h2>Статьи:</h2>
+      <% if (posts.length) { %>
+        <% posts.forEach(({id, title, text, createdAt, author,image})=>{ %>
+          <div class="posts">
+            <a href="/posts/<%= id %>">
+              <h3>
+                <%= title %>
+              </h3>
+              <img id="image" src="/uploads/<%= image ||  'no-image' %>" alt="no-image">
+            </a>
+            <!-- <div class="delete" data-id="<%= id %>"><a href=""><i class="fa-solid fa-trash" data-id="<%= id %>"></i></a>
+            </div> -->
+            <p>
+              <%= text %>
+            </p>
+            <div class="date">
+              <%= createdAt.toLocaleDateString() %><span class="author_name">
+                  Автор статьи: <%= author %>
+
+                </span>
+            </div>
+
+
+          </div>
+          <% }) %>
+            <% } %>
+              <%- include('../partials/footer.ejs') %>
+                <script>
+                  const urlImage = document.querySelector('#image').src;
+                  const partsString = urlImage.split('/');
+                  partsString.shift('http:');
+                  partsString.shift('');
+                  partsString.shift('localhost:3000');
+                  partsString.unshift('public');
+                  const link = partsString.join('/');
+                  console.log(link);
+                  let params = new URLSearchParams('link=' + link);
+                  document.addEventListener('click', (e) => {
+                    const id = e.target?.dataset?.id;
+                    if (id) {
+                      fetch(`/posts/${id}`, {
+                        method: 'DELETE',
+                        body: params,
+                      }).then(() => {
+                        window.location.reload();
+                      });
+                    }
+                  })
+                </script>
+  </body>
+
+</html>

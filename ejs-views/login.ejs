@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<%- include('../partials/head.ejs') %>
+
+  <body>
+    <div class="container">
+      <div class="header-top">
+        <span class="logo">I'mProger</span>
+
+        <%- include('../partials/nav-enter.ejs') %>
+      </div>
+      <div class="form">
+        <h2>Вход в личный кабинет</h2>
+        <form class="add_post" id="form" action="/cabinet" method="POST">
+
+          <label for="email">Ваш email</label>
+          <input type="email" name="email" id='email' value="<%= data?.email %>" placeholder="Введите ваш email">
+
+          <label for="password">Введите пароль</label>
+          <input type="password" name="pass" id="password_1" placeholder="Введите ваш пароль" />
+          <div id="error">
+            <%= data?.error %>
+              <% if(data?.errors) {%>
+                <ul>
+                  <% for(let i=0; i < data.errors.length;i++){ %>
+
+                    <li>
+                      <%= data.errors[i].msg %>
+                    </li>
+
+                    <% } %>
+                </ul>
+                <% } %>
+          </div>
+
+          <div id="success">
+            <%= data?.success %>
+          </div>
+          <input class="button" type="submit" id="send" value="Войти" onclick="sendData()" />
+        </form>
+      </div>
+    </div>
+    <%- include('../partials/footer.ejs') %>
+      <script>
+
+        // const pass = document.querySelector('#password');
+        // const success = document.querySelector('#success');
+        const error = document.querySelector('#error');
+        let email = document.querySelector('#email');
+
+        var isEmailCorrect = false;
+        var isPasswordCorrect = false;
+
+
+
+
+        email.addEventListener('blur', () => {
+          const emailVal = email.value;
+          const regexp = /^[а-яa-z0-9]+@[а-яa-z]+.[а-яa-z]{2,}$/i;
+          if (regexp.test(emailVal)) {
+            isEmailCorrect = true;
+            console.log("Email" + isEmailCorrect);
+            error.innerHTML = '';
+            // document.querySelector('#send').onclick = sendData;
+          } else {
+            error.innerHTML = '<span> Введен некорректный email</span>';
+
+          }
+        });
+
+        // function sendData() {
+        //   console.log("Data is sended!!")
+        //   let emailToSend = email.value;
+        //   let passToSend = pass.value;
+        //   let params = new URLSearchParams('email=' + emailToSend + '&password=' + passToSend);
+        //   fetch('/login', {
+        //     method: 'POST',
+        //     body: params,
+        //   }).then((res) => {
+        //     console.log(res);
+        //     res.json();
+        //   }).then((data) => {
+        //     console.log(data)
+        //     if (data) error.innerHTML = `<span> ${data}</span>`;
+        //     else window.location.href = '/cabinet';
+        //   })
+        //     .catch((err) => {
+        //       if (err) error.innerHTML = `<span> ${err}</span>`;
+        //     });
+        // }
+      </script>
+  </body>
+
+</html>

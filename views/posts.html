@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Разработка сайта</title>
+
+  <style>
+    @import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600;700&display=swap);
+
+    * {
+      outline: 0;
+    }
+
+    body {
+      font-family: Montserrat, sans-serif;
+      font-weight: 300;
+      background: #79badb;
+      color: #fafaca;
+    }
+
+    .container {
+      margin: 20px auto;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+      background: #4a5982;
+      margin-bottom: 50px;
+    }
+
+    .logo {
+      margin-left: 20px;
+    }
+
+    .menu {
+      display: flex;
+      justify-content: space-between;
+      list-style-type: none;
+    }
+
+    .menu>li {
+      margin-right: 20px;
+
+    }
+
+    a {
+      text-decoration: none;
+      color: antiquewhite;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    .posts {
+      background: #4a5982;
+      color: #fafaca;
+      padding: 15px;
+      margin-top: 30px;
+    }
+
+    .posts h3 {
+      margin-top: 15px;
+    }
+
+    .posts p {
+      margin-top: 15px;
+    }
+
+    .posts .date {
+      margin-top: 15px;
+    }
+
+    .posts .author_name {
+      display: inline-block;
+      margin-left: 800px;
+      margin-top: -20px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="header-top">
+      <span class="logo">I'mProger</span>
+
+      <ul class="menu">
+        <li><a href="/">Home</a></li>
+        <li><a href="/posts">Posts</a></li>
+        <li><a href="/add-post">New post</a></li>
+        <li><a href="/contacts">Contacts</a></li>
+      </ul>
+    </div>
+    <h2>Статьи:</h2>
+
+    <div class="posts">
+      <a href="/posts/1">
+        <h3>Post title</h3>
+      </a>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad commodi, magnam tempora perferendis amet adipisci
+        eaque pariatur, enim esse dicta, possimus iste totam itaque rerum cumque repudiandae! Aliquid beatae earum
+        cupiditate quia facere asperiores eaque eligendi aspernatur aliquam veniam? Quas non aliquam quis a ipsam
+        placeat, voluptatum consequatur rerum? Tempora!</p>
+
+      <div class="date">27.09.2023<span class="author_name">Serge</span></div>
+
+    </div>
+
+</body>
+
+</html>

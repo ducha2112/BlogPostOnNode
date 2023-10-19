@@ -1,0 +1,21 @@
+<% if(session.authorized){%>
+  <nav>
+    <ul class="menu">
+      <li><a href="/">Home</a></li>
+      <li><a href="/posts">Posts</a></li>
+      <li><a href="/add-post">New post</a></li>
+      <li><a href="/contacts">Contacts</a></li>
+      <li><a href="/cabinet">Private Cabinet</a></li>
+    </ul>
+  </nav>
+  <% } else {%>
+    <nav>
+      <ul class="menu">
+        <li><a href="/">Home</a></li>
+        <li><a href="/posts">Posts</a></li>
+        <li><a href="/contacts">Contacts</a></li>
+        <li><a href="/reg">Registration</a></li>
+        <li><a href="/login">Log In</a></li>
+      </ul>
+    </nav>
+    <% } %>
