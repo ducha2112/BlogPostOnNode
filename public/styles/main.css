@@ -70,6 +70,17 @@ body {
   margin-bottom: 20px;
   font-family: Montserrat, sans-serif;
 }
+.container ul.pagination > li > a {
+  width: calc(var(--index) * 2);
+  height: calc(var(--index) * 2);
+  background: #272725;
+  color: #fafaca;
+  border-radius: 3px;
+  line-height: calc(var(--index) * 2);
+  font-size: calc(var(--index) * 0.6);
+  padding: calc(var(--index) * 0.6);
+  font-weight: bold;
+}
 
 a:hover {
   text-decoration: none;

@@ -1,6 +1,8 @@
 const express = require("express");
 const createPath = require("../helpers/create-pass");
 const { check, body } = require("express-validator");
+// const { faker } = require("@faker-js/faker");
+const Post = require("../models/post");
 const {
   getPost,
   getPosts,
@@ -10,6 +12,10 @@ const {
   editingPost,
 } = require("../controllers/post-controller");
 const router = express.Router();
+const handleError = (res, error) => {
+  console.log(error);
+  res.render(createPath("error"), { title: "Error" });
+};
 
 router.get("/add-post", (req, res) => {
   const title = "Добавление статьи";
@@ -66,9 +72,25 @@ router.post(
   ],
   addPost
 );
+router.get("/posts/:page", getPosts);
 router.get("/posts", getPosts);
 router.get("/posts/:id", getPost);
 
 router.get("/edit/:id", editingPost);
+// router.get("/generate-fake-data", function (req, res) {
+//   for (let i = 0; i < 4; i++) {
+//     const post = new Post();
+
+//     post.title = faker.lorem.sentences();
+//     post.author = faker.person.firstName();
+//     post.text = faker.lorem.text();
+//     post.image = faker.image.url();
+
+//     post
+//       .save()
+//       .then((result) => res.redirect("/posts"))
+//       .catch((error) => handleError(res, error));
+//   }
+// });
 
 module.exports = router;

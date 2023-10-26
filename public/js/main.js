@@ -9,7 +9,7 @@ $("#in").html(
   '<a><h2 onclick="showText()">Hello, Dolly!</h2><div id="text"></div></a>'
 );
 
-const arr = ["node.jpg", "express.jpg", "code.jpg", "nodejs.png", "maxres.jpg"];
+const arr = ["node.jpg", "express.jpg", "ejs.png", "nodejs.png", "maxres.jpg"];
 function iterator(array) {
   let i = 0;
   return {

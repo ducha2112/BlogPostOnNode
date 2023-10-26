@@ -16,17 +16,25 @@ const getPost = (req, res) => {
 };
 const getPosts = (req, res) => {
   const title = "Статьи";
+  const onPage = 4;
+  const numberPage = req.params.page || 1;
   Post.find()
-    .sort({ createdAt: -1 }) // сортировка по дате по убыванию
+    .skip(onPage * numberPage - onPage)
+    .limit(onPage)
+    .sort({ createdAt: +1 }) // сортировка по дате по возрастанию
     .then((posts) => {
-      console.log(posts);
       for (const post of posts) {
-        const arrText = post.text.split(".").slice(0, 3);
+        const arrText = post.text.split(".").slice(0, 3); // укорачиваем статью
         post.text = arrText.join(".") + "...";
       }
-      console.log(posts);
-      res.render(createPath("posts"), { posts, title });
-      // console.log(posts);
+      Post.count().then((count) => {
+        res.render(createPath("posts"), {
+          posts: posts,
+          title: title,
+          current: numberPage,
+          pages: Math.ceil(count / onPage),
+        });
+      });
     })
     .catch((error) => handleError(res, error));
 };

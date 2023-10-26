@@ -42,6 +42,8 @@ app.listen(process.env.PORT, (error) => {
     ? console.log(errorMsg(error))
     : console.log(successMsg(`Listening localhost:${process.env.PORT}`));
 });
+
+// middlewares
 app.use(multer({ storage: storageConfig }).any());
 app.use(methodOverride("_method"));
 app.use(

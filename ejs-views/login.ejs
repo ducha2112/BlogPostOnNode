@@ -44,8 +44,6 @@
     <%- include('../partials/footer.ejs') %>
       <script>
 
-        // const pass = document.querySelector('#password');
-        // const success = document.querySelector('#success');
         const error = document.querySelector('#error');
         let email = document.querySelector('#email');
 
@@ -69,26 +67,6 @@
           }
         });
 
-        // function sendData() {
-        //   console.log("Data is sended!!")
-        //   let emailToSend = email.value;
-        //   let passToSend = pass.value;
-        //   let params = new URLSearchParams('email=' + emailToSend + '&password=' + passToSend);
-        //   fetch('/login', {
-        //     method: 'POST',
-        //     body: params,
-        //   }).then((res) => {
-        //     console.log(res);
-        //     res.json();
-        //   }).then((data) => {
-        //     console.log(data)
-        //     if (data) error.innerHTML = `<span> ${data}</span>`;
-        //     else window.location.href = '/cabinet';
-        //   })
-        //     .catch((err) => {
-        //       if (err) error.innerHTML = `<span> ${err}</span>`;
-        //     });
-        // }
       </script>
   </body>
 

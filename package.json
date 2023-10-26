@@ -9,6 +9,7 @@
   "author": "serg",
   "license": "ISC",
   "devDependencies": {
+    "@faker-js/faker": "^8.2.0",
     "nodemon": "^3.0.1"
   },
   "dependencies": {
