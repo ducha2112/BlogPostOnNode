@@ -74,7 +74,7 @@ router.post(
 );
 router.get("/posts/:page", getPosts);
 router.get("/posts", getPosts);
-router.get("/posts/:id", getPost);
+router.get("/posts/post/:id", getPost);
 
 router.get("/edit/:id", editingPost);
 // router.get("/generate-fake-data", function (req, res) {

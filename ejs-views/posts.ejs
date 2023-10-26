@@ -14,7 +14,7 @@
       <% if (posts.length) { %>
         <% posts.forEach(({id, title, text, createdAt, author,image})=>{ %>
           <div class="posts">
-            <a href="/posts/<%= id %>">
+            <a href="/posts/post/<%= id %>">
               <h3>
                 <%= title %>
               </h3>
